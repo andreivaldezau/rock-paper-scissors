@@ -1,6 +1,7 @@
 const ROCK = 0;
 const PAPER = 1;
 const SCISSORS = 2;
+const WIN_SCORE = 3;
 
 let humanScore = 0;
 let computerScore = 0;
@@ -41,12 +42,14 @@ function playRound(humanChoice, computerChoice) {
     console.log(
       `You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`
     );
+    humanScore++;
   } else {
     console.log(
       `You lose! ${capitalize(humanChoice)} does not beat ${capitalize(
         computerChoice
       )}.`
     );
+    computerScore++;
   }
 }
 
@@ -56,4 +59,18 @@ function capitalize(str) {
   } else {
     return str.at(0).toUpperCase() + str.slice(1).toLowerCase();
   }
+}
+
+function playGame() {
+  while (humanScore < WIN_SCORE && computerScore < WIN_SCORE) {
+    playRound(getHumanChoice(), getComputerChoice());
+    console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+  }
+  if (humanScore > computerScore) {
+    console.log("Human wins!");
+  } else {
+    console.log("Computer wins!");
+  }
+  humanScore = 0;
+  computerScore = 0;
 }
