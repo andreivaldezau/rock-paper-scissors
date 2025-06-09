@@ -2,6 +2,14 @@ const ROCK = 0;
 const PAPER = 1;
 const SCISSORS = 2;
 
+let humanScore = 0;
+let computerScore = 0;
+
+function getHumanChoice() {
+  input = prompt("Enter rock, paper, or scissors: ");
+  return input.toLowerCase();
+}
+
 function getComputerChoice() {
   let choice = getRandomInt(3);
   switch (choice) {
