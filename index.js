@@ -64,13 +64,21 @@ function capitalize(str) {
 function playGame() {
   while (humanScore < WIN_SCORE && computerScore < WIN_SCORE) {
     playRound(getHumanChoice(), getComputerChoice());
-    console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+    printScore();
   }
   if (humanScore > computerScore) {
     console.log("Human wins!");
   } else {
     console.log("Computer wins!");
   }
+  resetScore();
+}
+
+function printScore() {
+  console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+}
+
+function resetScore() {
   humanScore = 0;
   computerScore = 0;
 }
