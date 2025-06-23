@@ -3,14 +3,28 @@ const PAPER = 1;
 const SCISSORS = 2;
 const WIN_SCORE = 3;
 
-let humanScore = 0;
-let computerScore = 0;
-
-let winCondition = {
+const winCondition = {
   rock: "scissors",
   paper: "rock",
   scissors: "paper",
 };
+
+const btn_rock = document.querySelector("#rock");
+const btn_paper = document.querySelector("#paper");
+const btn_scissors = document.querySelector("#scissors");
+
+let humanScore = 0;
+let computerScore = 0;
+
+btn_rock.addEventListener("click", () =>
+  playRound("rock", getComputerChoice())
+);
+btn_paper.addEventListener("click", () =>
+  playRound("paper", getComputerChoice())
+);
+btn_scissors.addEventListener("click", () =>
+  playRound("scissors", getComputerChoice())
+);
 
 function getHumanChoice() {
   input = prompt("Enter rock, paper, or scissors: ");
