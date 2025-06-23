@@ -1,7 +1,7 @@
 const ROCK = 0;
 const PAPER = 1;
 const SCISSORS = 2;
-const WIN_SCORE = 3;
+const WIN_SCORE = 5;
 
 const winCondition = {
   rock: "scissors",
@@ -66,6 +66,7 @@ function playRound(humanChoice, computerChoice) {
     computerScore++;
   }
   printScore();
+  checkWinCondition();
 }
 
 function capitalize(str) {
@@ -91,6 +92,16 @@ function playGame() {
 
 function printScore() {
   score.textContent = `Human: ${humanScore}, Computer: ${computerScore}`;
+}
+
+function checkWinCondition() {
+  if (humanScore >= WIN_SCORE) {
+    results.textContent = "Human wins!";
+    resetScore();
+  } else if (computerScore >= WIN_SCORE) {
+    results.textContent = "Computer wins!";
+    resetScore();
+  }
 }
 
 function resetScore() {
