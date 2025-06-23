@@ -12,6 +12,8 @@ const winCondition = {
 const btn_rock = document.querySelector("#rock");
 const btn_paper = document.querySelector("#paper");
 const btn_scissors = document.querySelector("#scissors");
+const results = document.querySelector(".results");
+const score = document.querySelector(".score");
 
 let humanScore = 0;
 let computerScore = 0;
@@ -51,20 +53,19 @@ function getRandomInt(max) {
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
-    console.log(`Tie! You both played ${capitalize(humanChoice)}.`);
+    results.textContent = `Tie! You both played ${capitalize(humanChoice)}.`;
   } else if (winCondition[humanChoice] === computerChoice) {
-    console.log(
-      `You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`
-    );
+    results.textContent = `You win! ${capitalize(
+      humanChoice
+    )} beats ${capitalize(computerChoice)}.`;
     humanScore++;
   } else {
-    console.log(
-      `You lose! ${capitalize(humanChoice)} does not beat ${capitalize(
-        computerChoice
-      )}.`
-    );
+    results.textContent = `You lose! ${capitalize(
+      humanChoice
+    )} does not beat ${capitalize(computerChoice)}.`;
     computerScore++;
   }
+  printScore();
 }
 
 function capitalize(str) {
@@ -89,7 +90,7 @@ function playGame() {
 }
 
 function printScore() {
-  console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+  score.textContent = `Human: ${humanScore}, Computer: ${computerScore}`;
 }
 
 function resetScore() {
